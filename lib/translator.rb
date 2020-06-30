@@ -18,20 +18,14 @@ def get_japanese_emoticon
   # code goes here
 end
 
-def get_english_meaning(file,j_emoticon)
-
-  emoticons = load_library(file)
-  eng_meaning = ""
-  apology = "Sorry, that emoticon was not found"
-  emoticons.each do |emotion, lang|
-    lang.each do |inner_key,emoticon|
-      if emoticon == j_emoticon
-        eng_meaning = emotion
-      end
-    end
-    if eng_meaning == ""
-      eng_meaning = apology
+def get_english_meaning(yaml_file, j_emoticons)
+  english_meaning = ""
+  sorry = "Sorry, that emoticon was not found"
+  library = load_library(yaml_file)
+  library.each do |meaning, langs|
+    langs.each do |in_key, emoti|
+      emoti == j_emoticons ? return meaning : english_meaning == sorry
     end
   end
-  eng_meaning
+  english_meaning
 end
