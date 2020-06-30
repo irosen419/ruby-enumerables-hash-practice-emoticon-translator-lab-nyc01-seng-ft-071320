@@ -23,6 +23,7 @@ def get_english_meaning(yaml_file, j_emoticons)
   sorry = "Sorry, that emoticon was not found"
   library = load_library(yaml_file)
   library.each do |meaning, langs|
+    meaning
     langs.each do |in_key, emoti|
       emoti == j_emoticons ? return meaning : english_meaning == sorry
     end
